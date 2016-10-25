@@ -1,0 +1,98 @@
+---
+title: "Homework4"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+#Write bootstrap code to illustrate the central limit theorem in R markdown 
+#and push the result to GitHub. Use a normal distribution with two different 
+#sample sizes and an exponential distribution with two different sample sizes. 
+#Correct code alone is insufficient. Please also comment on the code and 
+#explain the results. For help, see the lotsa.medians function in Unit 4. 
+#The deliverable is a link to a GitHub repo containing the code.
+
+
+#assuming a vector with 10 numbers that is normally distribution
+x<-c(rnorm(10))
+
+#using bootstap method to general the sample mean
+sample(x,size=length(x),replace=T)
+mean(x)
+#repeat the process 10000 times
+R<-10000
+bootmean<-numeric(R)
+for (i in 1:R){bootsample<-sample(x,size=length(x),replace=TRUE)
+bootmean[i]<-mean(bootsample)
+}
+
+
+#histogram show a normal distribution of the 10000 means
+hist(bootmean)
+
+#assuming a vector with 20 numbers that is normally distribution
+x<-c(rnorm(20))
+
+#using bootstap method to general the sample mean
+sample(x,size=length(x),replace=T)
+mean(x)
+#repeat the process 10000 times
+R<-10000
+bootmean<-numeric(R)
+for (i in 1:R){bootsample<-sample(x,size=length(x),replace=TRUE)
+bootmean[i]<-mean(bootsample)
+}
+
+
+#histogram show a normal distribution of the 10000 means
+hist(bootmean)
+
+
+
+#assuming a vector with 10 numbers with exponent of 3 that is normally distribution
+x<-c(rnorm(10)^3)
+
+#using bootstap method to general the sample mean
+sample(x,size=length(x),replace=T)
+mean(x)
+#repeat the process 10000 times
+R<-10000
+bootmean<-numeric(R)
+for (i in 1:R){bootsample<-sample(x,size=length(x),replace=TRUE)
+bootmean[i]<-mean(bootsample)
+}
+
+
+#histogram show a normal distribution of the 10000 means
+hist(bootmean)
+
+#assuming a vector with 20 numbers with exponent of 2 that is normally distribution
+x<-c(rnorm(20)^2)
+
+#using bootstap method to general the sample mean
+sample(x,size=length(x),replace=T)
+mean(x)
+#repeat the process 10000 times
+R<-10000
+bootmean<-numeric(R)
+for (i in 1:R){bootsample<-sample(x,size=length(x),replace=TRUE)
+bootmean[i]<-mean(bootsample)
+}
+
+
+#histogram show a normal distribution of the 10000 means
+hist(bootmean)
+```
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
