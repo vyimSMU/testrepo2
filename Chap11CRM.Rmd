@@ -1,0 +1,78 @@
+---
+title: "Chapter11"
+author: "Victor Yim"
+date: "November 13, 2016"
+output: html_document
+---
+getwd()  
+setwd('C:/Users/Victor Yim/Downloads')  
+getwd()  
+CRM<- read.csv("C:\\Users\\Victor Yim\\Downloads\\CRM.csv", header = TRUE)  
+Vol<-function(d,logrets)   
+{  
+  var=0  
+  lam=0  
+  varlist <-c()  
+  for (r in logrets){  
+    lam = lam*(1-1/d) + 1  
+    var = (1 - 1/lam)*var + (1/lam)*r^2  
+    varlist<-c(varlist, var)  
+  }  
+  sqrt(varlist)  
+}  
+CRMTS<-ts(CRM)  
+head(CRM)  
+length(CRM)  
+CRMret <- log(lag(CRMTS))-log(CRMTS)  
+CRMVol <- sd(CRMret) * sqrt(250)*100  
+CRMVol  
+volest<-Vol(10,CRMret)  
+volest2<-Vol(30,CRMret)  
+volest3<-Vol(100,CRMret)  
+```{r setup, include=FALSE}
+getwd()
+setwd('C:/Users/Victor Yim/Downloads')
+getwd()
+CRM<- read.csv("C:\\Users\\Victor Yim\\Downloads\\CRM.csv", header = TRUE)
+Vol<-function(d,logrets)
+{
+  var=0
+  lam=0
+  varlist <-c()
+  for (r in logrets){
+    lam = lam*(1-1/d) + 1
+    var = (1 - 1/lam)*var + (1/lam)*r^2
+    varlist<-c(varlist, var)
+  }
+  sqrt(varlist)
+}
+CRMTS<-ts(CRM)
+head(CRM)
+length(CRM)
+CRMret <- log(lag(CRMTS))-log(CRMTS)
+CRMVol <- sd(CRMret) * sqrt(250)*100
+CRMVol
+volest<-Vol(10,CRMret)
+volest2<-Vol(30,CRMret)
+volest3<-Vol(100,CRMret)
+
+
+plot(volest,type="l")
+lines(volest2,type="l", col="red")
+lines(volest3,type="l", col="blue")
+```
+
+
+
+```{r cars}
+summary(CRMret)
+```
+
+
+
+```{r pressure, echo=FALSE}
+plot(volest,type="l")
+lines(volest2,type="l", col="red")
+lines(volest3,type="l", col="blue")
+```
+
