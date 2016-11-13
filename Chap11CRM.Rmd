@@ -4,6 +4,8 @@ author: "Victor Yim"
 date: "November 13, 2016"
 output: html_document
 ---
+##This is data from Salesforce.com stock (Ticker: CRM) closing price for the last 12 months
+
 getwd()  
 setwd('C:/Users/Victor Yim/Downloads')  
 getwd()  
@@ -64,11 +66,17 @@ lines(volest3,type="l", col="blue")
 
 
 
-```{r cars}
+```{r CRMret}
+#this is the Return of CRM
 summary(CRMret)
 ```
 
-
+```{r}
+#plot for 3 level of weight at 10 / 30 /100
+#plot(volest,type="l")
+#lines(volest2,type="l", col="red")
+#lines(volest3,type="l", col="blue")
+```
 
 ```{r pressure, echo=FALSE}
 plot(volest,type="l")
